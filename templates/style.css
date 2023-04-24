@@ -1,0 +1,35 @@
+.landing-page {
+  background-image: url('https://images.unsplash.com/photo-1606785179254-4a0d4e4c4f4f');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.logo {
+  margin-top: 20vh;
+}
+
+.search-form {
+  margin-top: 5vh;
+  display: flex;
+}
+
+.search-bar {
+  font-size: 1.5rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  align-self: center;
+}
+
+/*.search-button {*/
+/*  font-size: 5.5rem;*/
+/*  padding: 10px 20px;*/
+/*  background-color: #4CAF50;*/
+/*  display: block;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);*/
+/*}*/
