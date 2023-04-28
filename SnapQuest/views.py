@@ -6,6 +6,7 @@ def landing_page(request):
     return render(request, 'landing.html')
 
 def search_results(request):
+    #results = [] #just for testing git push
     query = request.GET.get('query')
     print(query)
     Image_search(query)
