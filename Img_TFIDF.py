@@ -6,18 +6,12 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 
-f = open('image_search_db.json')
-data = f.readlines()
+image_file = open('image_search_db.txt')
 img_dict ={}
 
-for d in data:
-  line = json.loads(d)
-  for key, value in line.items():
-    if(key == 'key'):
-      curr_key = value
-    else:
-      img_dict[curr_key] = value
-
+for data in image_file:
+  current_line = data.split(":::")
+  img_dict[current_line[0]] = current_line[1].strip("\n")
 #lowercase the words
 img_lower = {}
 for key, value in img_dict.items():
@@ -135,4 +129,3 @@ img_desc_TF = term_freq(noiseless_img_token)
 img_desc_IDF = inv_doc_freq(inverted_ind)
 img_desc_TFIDF = cal_tfidf(img_desc_TF, img_desc_IDF)
 ######
-      
