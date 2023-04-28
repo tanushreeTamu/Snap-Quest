@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>SnapQuest</title>
-    <link rel="stylesheet" href="style.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'images/style.css' %}">
 </head>
 <body>
     <div class="container-fluid landing-page">
@@ -24,6 +25,8 @@
       </div>
     </div>
   </div>
+  {% load static %}
+  <img src="{% static 'images/tree_1.jpg' %}" alt="A cute tree" width="400" height="330">
 </div>
 </body>
 </html>
