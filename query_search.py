@@ -39,26 +39,24 @@ def queryImg_cosine(img_TFIDF,query):
     sorted_query_img_score = dict(sorted(query_img_score.items(), key=lambda item: item[1], reverse = True))
     return sorted_query_img_score
 
-def print_top10_results(results):
+def Top10_image_list(results):
     count =1
-    for score,image in results.items():
-        print(count,"\t",score, "\t", image)
-        count+=1
-        if(count >=11):
-            break
-
-#adding test function here for github push
-def Image_list(image_doc_with_score):
     img_list = []
-    for key,val in image_doc_with_score.items():
-        if val != 0:
-            img_list.append(key)
+    for image,score in results.items():
+        if score != 0:
+            img_list.append(image)
+            print(count,"\t",score, "\t", image)
+            count+=1
+            if(count >=11):
+                break
     return img_list
+
 
 def Image_search(query):
     query_processed = pre_process_query(query)
     img_query_cosine_simil = queryImg_cosine(Img_TFIDF.img_desc_TFIDF, query_processed)
-    print_top10_results(img_query_cosine_simil)
+    images = Top10_image_list(img_query_cosine_simil)
+    return images
 
 '''
 

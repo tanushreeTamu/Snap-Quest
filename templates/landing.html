@@ -27,6 +27,20 @@
   </div>
   {% load static %}
   <img src="{% static 'images/tree_1.jpg' %}" alt="A cute tree" width="400" height="330">
+  <div class="row justify-content-center" style =" display: flex;flex-direction: row;align-items: center;">
+    {% if results %}
+        {% for image in results %}
+            <div class="col-md-4">
+              {% load static %}
+              <img src="{% static 'images/{{ image }}' %}" alt="{{ image }}" class="img-thumbnail" width="400" height="330">
+            </div>
+        {% endfor %}
+    {% elif submitted %}
+      <div class="col-md-12">
+        <p class="text-center" style="display: flex; justify-content: center;">No results found for "{{ query }}".</p>
+      </div>
+    {% endif %}
+  </div>
 </div>
 </body>
 </html>
