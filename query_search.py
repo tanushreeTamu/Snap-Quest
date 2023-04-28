@@ -1,7 +1,7 @@
 import Img_TFIDF
 import nltk
 import math
-nltk.download('all')
+#nltk.download('all')
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -38,10 +38,25 @@ def queryImg_cosine(img_TFIDF,query):
         query_img_score[doc] = score_final
     sorted_query_img_score = dict(sorted(query_img_score.items(), key=lambda item: item[1], reverse = True))
     return sorted_query_img_score
+def print_top10_results(results):
+    count =1
+    for score,image in results.items():
+        print(count,"\t",score, "\t", image)
+        count+=1
+        if(count >=11):
+            break
 
 def Image_search(query):
     query_processed = pre_process_query(query)
     img_query_cosine_simil = queryImg_cosine(Img_TFIDF.img_desc_TFIDF, query_processed)
-    print(img_query_cosine_simil)
+    print_top10_results(img_query_cosine_simil)
 
+'''
 
+if __name__ == "__main__":
+    query = "water body"
+    query_processed = pre_process_query(query)
+    img_query_cosine_simil = queryImg_cosine(Img_TFIDF.img_desc_TFIDF, query_processed)
+    print_top10_results(img_query_cosine_simil)
+
+'''
