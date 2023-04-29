@@ -11,7 +11,7 @@ img_dict ={}
 
 for data in image_file:
   current_line = data.split(":::")
-  img_dict[current_line[0]] = current_line[1].strip("\n")
+  img_dict[current_line[0].strip()] = current_line[1].strip("\n")
 #lowercase the words
 img_lower = {}
 for key, value in img_dict.items():

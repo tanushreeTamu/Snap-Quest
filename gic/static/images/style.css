@@ -22,14 +22,22 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   align-self: center;
 }
-
+/*Style for the search button*/
 .search-button {
-  font-size: 5.5rem;
+  font-size: 1.2rem;
   padding: 10px 20px;
   background-color: #19531b;
-  display: block;
-  color: white;
   border: none;
+  color: white;
   border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* style for the gallery of images display*/
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-gallery .col-md-4 {
+  margin: 10px;
 }

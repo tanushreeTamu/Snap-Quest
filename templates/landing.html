@@ -25,12 +25,12 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center" style =" display: flex;flex-direction: row;align-items: center;">
+  <div class="row justify-content-center image-gallery" style =" display: flex;flex-wrap: wrap;flex-direction: row !important;align-items: center;">
     {% if results %}
         {% for image in results %}
             <div class="col-md-4">
               {% load static %}
-              <br><img src="{% static image %}" alt="{{ image }}" class="img-thumbnail" width="350" height="350"><br>
+              <br><img src="{% static image %}" alt="{{ image }}" class="img-thumbnail" width="250" height="250"><br>
             </div>
         {% endfor %}
     {% elif submitted %}
@@ -39,6 +39,7 @@
       </div>
     {% endif %}
   </div>
+  
 </div>
 </body>
 </html>
