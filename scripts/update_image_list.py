@@ -183,7 +183,7 @@ async def main(opt):
                         async with aiofiles.open(out_file, "a") as out_file:  
                             txtstr = ""
                             head,tail = os.path.split(img_file_name)
-                            txtstr += str(tail)+" ::: "+str(caption)+"\n"                            
+                            txtstr += "images/"+str(tail)+" ::: "+str(caption)+"\n"                            
                             await out_file.write(txtstr)
 
                     if opt.format in ["filename", "mrwho", "joepenna"]:
@@ -222,7 +222,7 @@ if __name__ == "__main__":
 
 
     source_folder = os.path.join(os.getcwd(),"temp_images")
-    destination_folder = os.path.join(os.getcwd(),"images")
+    destination_folder = os.path.join(os.getcwd(),"/gic/static/images")
 
     # fetch all files
     for file_name in os.listdir(source_folder):
