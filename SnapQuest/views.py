@@ -30,7 +30,7 @@ def search_results(request):
 def upload_image(request):
     if request.method == 'POST' and request.FILES['image']:
         myfile = request.FILES['image']
-        fs = FileSystemStorage(os.path.join(settings.STATICFILES_DIRS[0], 'images'))
+        fs = FileSystemStorage(os.path.join(settings.STATICFILES_DIRS[0], 'new_images'))
         filename = fs.save(myfile.name, myfile)
         return render(request, 'landing.html')
     return render(request, 'landing.html')
