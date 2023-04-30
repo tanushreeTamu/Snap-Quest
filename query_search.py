@@ -9,11 +9,18 @@ from nltk.corpus import stopwords
 #pre-processing for query
 def pre_process_query(query):
     processed_query = []
+    stop_words = set(stopwords.words('english'))
     for data in query.split():
         low_val = data.lower()
         lemm_query = WordNetLemmatizer().lemmatize(low_val)
         processed_query.append(lemm_query)
-    return processed_query
+    l = []
+    for data in processed_query:
+      if data.isalpha():
+        if data not in stop_words and len(data)>1:
+          l.append(data)
+    less_wordy_query = l
+    return less_wordy_query
 
 def calc_Denom1_img(tfIdf):
     val=0
