@@ -47,7 +47,7 @@ def Top10_image_list(results):
             img_list.append(image)
             print(count,"\t",score, "\t", image)
             count+=1
-            if(count >=6):
+            if(count >=11):
                 break
     return img_list
 
