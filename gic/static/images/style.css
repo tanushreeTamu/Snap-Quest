@@ -54,3 +54,19 @@
 .image-hidden {
   display: none;
 }
+
+#more-button {
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #333;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333333;
+  transition: all 0.2s ease-in-out;
+}
+
+#more-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
