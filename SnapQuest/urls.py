@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.landing_page, name='landing'),
     path('search/', views.search_results, name='search_results'),
+    path('upload_image/', views.upload_image, name='upload_image')
 ]
