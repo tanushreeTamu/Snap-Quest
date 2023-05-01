@@ -14,6 +14,16 @@ import io
 import aiofiles
 import shutil
 
+class options:
+  def __init__(self):
+    options.img_dir = "gic/static/new_images"
+    options.out_dir = os.getcwd()
+    options.format = "txt"
+    options.nucleus = False
+    options.q_factor = 1.0
+    options.min_length =22
+    options.torch_device = "cpu"
+
 SIZE = 384
 BLIP_MODEL_URL = 'https://storage.googleapis.com/sfr-vision-language-research/BLIP/models/model_base_caption_capfilt_large.pth'
 
@@ -24,7 +34,7 @@ def get_parser(**parser_kwargs):
         type=str,
         nargs="?",
         const=True,
-        default="temp_images",
+        default="gic/static/new_images",
         help="directory with images to be captioned",
     ),
     parser.add_argument(
@@ -199,30 +209,27 @@ async def main(opt):
 def isWindows():
     return sys.platform.startswith("win")
 
-if __name__ == "__main__":
-    parser = get_parser()
-    opt = parser.parse_args()
+def refresh_index():
+    opt = options()
+    os.startfile("activate_venv.bat")
 
     if opt.format not in ["filename", "mrwho", "joepenna", "txt", "text", "caption"]:
         raise ValueError("format must be 'filename', 'mrwho', 'txt', or 'caption'")
-
     if (isWindows()):
         print("Windows detected, using asyncio.WindowsSelectorEventLoopPolicy")
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     else:
         print("Unix detected, using default asyncio event loop policy")
-
     if not os.path.exists("scripts/BLIP"):
         print("BLIP not found, cloning BLIP repo")
         subprocess.run(["git", "clone", "https://github.com/salesforce/BLIP", "scripts/BLIP"])
     blip_path = "scripts/BLIP"
     sys.path.append(blip_path)
-
     asyncio.run(main(opt))
 
 
-    source_folder = os.path.join(os.getcwd(),"temp_images")
-    destination_folder = os.path.join(os.getcwd(),"/gic/static/images")
+    source_folder = os.path.join(os.getcwd(),"gic/static/new_images")
+    destination_folder = os.path.join(os.getcwd(),"gic/static/images")
 
     # fetch all files
     for file_name in os.listdir(source_folder):
