@@ -672,3 +672,4 @@ images/wdyc2.jpeg ::: a woman sitting in the drivers seat of a yellow truck with
 images/wdyc3.jpeg ::: a woman sitting in the driver's seat of a car with her hand on the steering wheel
 images/wdyc4.jpeg ::: a woman sitting in the driver seat of a yellow car with her hand on the steering wheel
 images/wdyc5.jpeg ::: a woman sitting in a yellow car smiling and waving her hand out the window - stock image
+images/carrr.jpg ::: a silver sports car parked on the side of the road next to a blue car on the side of the road

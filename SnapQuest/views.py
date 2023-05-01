@@ -1,5 +1,4 @@
 import os
-
 from django.shortcuts import render
 from query_search import Image_search
 import update_image_list
@@ -19,8 +18,14 @@ def search_results(request):
     search_type = request.GET.get('search_type')
     if request.GET.get('query'):
         query = request.GET['query']
-        results = Image_search(query)
-        #results = Pos_query_search(query)
+        if search_type == 'naive':
+            results = Image_search(query)
+        elif search_type == 'desm':
+            results = DESM_search(query)
+        elif search_type == 'positional':
+            results = Pos_query_search(query)
+        else:
+            results = Image_search(query)
         submitted = True
     
     context = {
