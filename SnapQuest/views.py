@@ -2,6 +2,7 @@ import os
 
 from django.shortcuts import render
 from query_search import Image_search
+import update_image_list
 from DESM_query_serach import DESM_search
 from positional_search import Pos_query_search
 from django.conf import settings
@@ -18,8 +19,8 @@ def search_results(request):
     search_type = request.GET.get('search_type')
     if request.GET.get('query'):
         query = request.GET['query']
-        #results = Image_search(query)
-        results = Pos_query_search(query)
+        results = Image_search(query)
+        #results = Pos_query_search(query)
         submitted = True
     
     context = {
@@ -36,5 +37,6 @@ def upload_image(request):
         myfile = request.FILES['image']
         fs = FileSystemStorage(os.path.join(settings.STATICFILES_DIRS[0], 'new_images'))
         filename = fs.save(myfile.name, myfile)
-        return render(request, 'landing.html')
+        #return render(request, 'landing.html')
+    update_image_list.refresh_index()
     return render(request, 'landing.html')
