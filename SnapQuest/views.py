@@ -13,6 +13,9 @@ def landing_page(request):
 def search_results(request):
     results = []
     submitted = False
+    #Use this to variable to call the specific algo
+    print(request.GET.get('search_type'))
+    search_type = request.GET.get('search_type')
     if request.GET.get('query'):
         query = request.GET['query']
         #results = Image_search(query)
@@ -22,7 +25,8 @@ def search_results(request):
     context = {
         'results': results,
         'query': query, 
-        'submitted': submitted
+        'submitted': submitted,
+        'search_type': search_type
     }
 
     return render(request, 'landing.html', context)

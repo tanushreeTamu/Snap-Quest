@@ -15,6 +15,20 @@
             </div>
             <div class="search-form">
                 <form action="{% url 'search_results' %}" method="GET">
+                    <div class="radio-buttons">
+                        <input type="radio" id="naive" name="search_type" value="naive"
+                               {% if request.GET.search_type == "naive" %}checked{% endif %} required>
+                        <label for="naive">Naive</label>
+
+                        <input type="radio" id="desm" name="search_type" value="desm"
+                               {% if request.GET.search_type == "desm" %}checked{% endif %} required>
+                        <label for="desm">DESM</label>
+
+                        <input type="radio" id="positional" name="search_type" value="positional"
+                               {% if request.GET.search_type == "positional" %}checked{% endif %} required>
+                        <label for="positional">Positional</label>
+                    </div>
+                    <br>
                     <div class="input-group">
                         <input type="text" class="form-control search-bar" name="query" placeholder="Search images..."
                                value="{{ request.GET.query }}" required>
