@@ -16,9 +16,9 @@
             <div class="search-form">
                 <form action="{% url 'search_results' %}" method="GET">
                     <div class="radio-buttons">
-                        <input type="radio" id="naive" name="search_type" value="naive"
-                               {% if request.GET.search_type == "naive" %}checked{% endif %} required>
-                        <label for="naive">Naive</label>
+                        <input type="radio" id="Cosine" name="search_type" value="Cosine"
+                               {% if request.GET.search_type == "Cosine" %}checked{% endif %} required>
+                        <label for="Cosine">Cosine</label>
 
                         <input type="radio" id="desm" name="search_type" value="desm"
                                {% if request.GET.search_type == "desm" %}checked{% endif %} required>
