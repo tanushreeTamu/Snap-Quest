@@ -9,6 +9,7 @@ import torch
 import aiohttp
 import asyncio
 import subprocess
+import platform
 import numpy as np
 import io
 import aiofiles
@@ -96,6 +97,7 @@ def load_image(raw_image, device):
         transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
     ])
     image = transform(raw_image).unsqueeze(0).to(device)
+    print("Image tensor shape after transformation:", image.shape)
     return image
 
 def get_out_file_name(out_dir, base_name, ext):
@@ -161,12 +163,15 @@ async def main(opt):
                         image = image.convert("RGB")
 
                     image = load_image(image, device=torch.device(opt.torch_device))
+                    print("Model input tensor shape:", image.shape)
 
+                    
                     if opt.nucleus:
                         captions = blip_decoder.generate(image, sample=True, top_p=opt.q_factor)
                     else:
                         captions = blip_decoder.generate(image, sample=sample, num_beams=16, min_length=opt.min_length, \
                             max_length=48, repetition_penalty=opt.q_factor)
+                
 
                     caption = captions[0]
 
@@ -211,7 +216,12 @@ def isWindows():
 
 def refresh_index():
     opt = options()
-    os.startfile("activate_venv.bat")
+    # os.startfile("activate_venv.bat")
+
+    if platform.system() == "Darwin":  # macOS
+        subprocess.run(["bash", "activate_venv.sh"], check=True)
+    elif platform.system() == "Windows":
+        os.startfile("activate_venv.bat")
 
     if opt.format not in ["filename", "mrwho", "joepenna", "txt", "text", "caption"]:
         raise ValueError("format must be 'filename', 'mrwho', 'txt', or 'caption'")
@@ -236,8 +246,13 @@ def refresh_index():
         # construct full file path
         #source = source_folder + file_name
         #destination = destination_folder + file_name
+        print(f"Processing: {file_name}")
         source = os.path.join(source_folder , file_name)
         destination = os.path.join(destination_folder , file_name)
+
+        print(f"Source: {source}")
+        print(f"Destination: {destination}")
+
         # copy only files
         if os.path.isfile(source):
             shutil.copy(source, destination)
