@@ -4,9 +4,10 @@ Method to run on non- GPU window device:
 2. Run activate_venv.bat
 
 Method to run on mac:
-1. create an executable setup_venv.sh file using command "chmod +x create_venv.sh"
+1. create an executable create_venv.sh file using command "chmod +x create_venv.sh"
 2. run ./create_venv.sh
-This will create the virtual env, install the requirements and activate the venv.
+This will create the virtual env, install the requirements.
+3. To activate the venv, create an executable activate_venv.sh and run ./activate_venv.sh
 
 
 First image upload will be slower.
